@@ -1,9 +1,12 @@
 FirstApp::Application.routes.draw do
-  get "pages/home"
+  match "/contact", :to => "pages#contact"
 
-  get "pages/contact"
+	match "/about", :to => "pages#about"
 
-	get "pages/about"
+	match "/help", :to => "pages#help"
+
+	# match "/", :to => "pages#home"
+	root :to => 'pages#home'
 
   resources :microposts
 

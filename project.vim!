@@ -54,12 +54,12 @@ badd +16 app/views/layouts/application.html.erb
 badd +8 app/helpers/application_helper.rb
 badd +0 app/views/pages/home.html.erb
 badd +113 app/assets/stylesheets/custom.css
-badd +6 app/views/layouts/_header.html.erb
-badd +2 app/views/layouts/_footer.html.erb
-badd +26 spec/requests/layout_links_spec.rb
+badd +11 app/views/layouts/_header.html.erb
+badd +4 app/views/layouts/_footer.html.erb
+badd +0 spec/requests/layout_links_spec.rb
 badd +7 app/views/pages/help.html.erb
 silent! argdel *
-edit app/views/layouts/_header.html.erb
+edit spec/requests/layout_links_spec.rb
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -190,7 +190,7 @@ wincmd w
 argglobal
 setlocal keymap=
 setlocal noarabic
-setlocal noautoindent
+setlocal autoindent
 setlocal balloonexpr=
 setlocal nobinary
 setlocal bufhidden=
@@ -218,8 +218,8 @@ setlocal nodiff
 setlocal equalprg=
 setlocal errorformat=
 setlocal noexpandtab
-if &filetype != 'eruby'
-setlocal filetype=eruby
+if &filetype != 'ruby'
+setlocal filetype=ruby
 endif
 setlocal foldcolumn=0
 setlocal foldenable
@@ -276,8 +276,8 @@ setlocal statusline=
 setlocal suffixesadd=
 setlocal swapfile
 setlocal synmaxcol=3000
-if &syntax != 'eruby'
-setlocal syntax=eruby
+if &syntax != 'ruby'
+setlocal syntax=ruby
 endif
 setlocal tabstop=2
 setlocal tags=
@@ -289,12 +289,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 2 - ((1 * winheight(0) + 6) / 12)
+let s:l = 26 - ((11 * winheight(0) + 6) / 12)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-2
-normal! 086l
+26
+normal! 0
 wincmd w
 argglobal
 edit config/routes.rb
@@ -399,12 +399,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 9 - ((8 * winheight(0) + 6) / 12)
+let s:l = 8 - ((7 * winheight(0) + 6) / 12)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-9
-normal! 024l
+8
+normal! 025l
 wincmd w
 argglobal
 edit app/controllers/pages_controller.rb
@@ -516,7 +516,7 @@ normal! zt
 12
 normal! 0
 wincmd w
-2wincmd w
+3wincmd w
 exe 'vert 1resize ' . ((&columns * 21 + 75) / 150)
 exe '2resize ' . ((&lines * 12 + 19) / 39)
 exe 'vert 2resize ' . ((&columns * 128 + 75) / 150)
