@@ -2,9 +2,11 @@ require 'spec_helper'
 
 describe UsersController do
 
-  describe "GET 'new'" do
+  render_views
+
+  describe "GET 'signup'" do
     it "returns http success" do
-      get 'new'
+      get '/signup'
       response.should be_success
     end
 
