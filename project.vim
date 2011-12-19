@@ -20,6 +20,7 @@ imap s <Plug>Isurround
 imap  <Plug>Isurround
 let &cpo=s:cpo_save
 unlet s:cpo_save
+set autoindent
 set backspace=indent,eol,start
 set fileencodings=ucs-bom,utf-8,default,latin1
 set helplang=en
@@ -42,24 +43,28 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +13 app/controllers/pages_controller.rb
-badd +7 config/routes.rb
+badd +14 app/controllers/pages_controller.rb
+badd +2 config/routes.rb
 badd +2 .autotest
 badd +36 spec/controllers/pages_controller_spec.rb
 badd +27 Gemfile
-badd +40 spec/spec_helper.rb
+badd +1 spec/spec_helper.rb
 badd +1 app/views/pages/about.html.erb
 badd +1 app/controllers/application_controller.rb
 badd +16 app/views/layouts/application.html.erb
 badd +8 app/helpers/application_helper.rb
-badd +0 app/views/pages/home.html.erb
+badd +1 app/views/pages/home.html.erb
 badd +113 app/assets/stylesheets/custom.css
-badd +6 app/views/layouts/_header.html.erb
+badd +4 app/views/layouts/_header.html.erb
 badd +2 app/views/layouts/_footer.html.erb
-badd +26 spec/requests/layout_links_spec.rb
+badd +1 spec/requests/layout_links_spec.rb
 badd +7 app/views/pages/help.html.erb
+badd +4 spec/controllers/users_controller_spec.rb
+badd +1 app/controllers/users_controller.rb
+badd +1 app/views/users/new.html.erb
+badd +0 app/views/users/index.html.erb
 silent! argdel *
-edit app/views/layouts/_header.html.erb
+edit spec/controllers/users_controller_spec.rb
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -76,13 +81,13 @@ set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
-exe 'vert 1resize ' . ((&columns * 21 + 75) / 150)
+exe 'vert 1resize ' . ((&columns * 22 + 75) / 150)
 exe '2resize ' . ((&lines * 12 + 19) / 39)
-exe 'vert 2resize ' . ((&columns * 128 + 75) / 150)
+exe 'vert 2resize ' . ((&columns * 127 + 75) / 150)
 exe '3resize ' . ((&lines * 12 + 19) / 39)
-exe 'vert 3resize ' . ((&columns * 128 + 75) / 150)
+exe 'vert 3resize ' . ((&columns * 127 + 75) / 150)
 exe '4resize ' . ((&lines * 11 + 19) / 39)
-exe 'vert 4resize ' . ((&columns * 128 + 75) / 150)
+exe 'vert 4resize ' . ((&columns * 127 + 75) / 150)
 argglobal
 enew
 file NERD_tree_1
@@ -190,7 +195,7 @@ wincmd w
 argglobal
 setlocal keymap=
 setlocal noarabic
-setlocal noautoindent
+setlocal autoindent
 setlocal balloonexpr=
 setlocal nobinary
 setlocal bufhidden=
@@ -218,8 +223,8 @@ setlocal nodiff
 setlocal equalprg=
 setlocal errorformat=
 setlocal noexpandtab
-if &filetype != 'eruby'
-setlocal filetype=eruby
+if &filetype != 'ruby'
+setlocal filetype=ruby
 endif
 setlocal foldcolumn=0
 setlocal foldenable
@@ -276,8 +281,8 @@ setlocal statusline=
 setlocal suffixesadd=
 setlocal swapfile
 setlocal synmaxcol=3000
-if &syntax != 'eruby'
-setlocal syntax=eruby
+if &syntax != 'ruby'
+setlocal syntax=ruby
 endif
 setlocal tabstop=2
 setlocal tags=
@@ -289,12 +294,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 2 - ((1 * winheight(0) + 6) / 12)
+let s:l = 12 - ((6 * winheight(0) + 6) / 12)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-2
-normal! 086l
+12
+normal! 09l
 wincmd w
 argglobal
 edit config/routes.rb
@@ -399,15 +404,15 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 9 - ((8 * winheight(0) + 6) / 12)
+let s:l = 2 - ((1 * winheight(0) + 6) / 12)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-9
-normal! 024l
+2
+normal! 02l
 wincmd w
 argglobal
-edit app/controllers/pages_controller.rb
+edit app/views/users/index.html.erb
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -438,8 +443,8 @@ setlocal nodiff
 setlocal equalprg=
 setlocal errorformat=
 setlocal noexpandtab
-if &filetype != 'ruby'
-setlocal filetype=ruby
+if &filetype != 'eruby'
+setlocal filetype=eruby
 endif
 setlocal foldcolumn=0
 setlocal foldenable
@@ -496,8 +501,8 @@ setlocal statusline=
 setlocal suffixesadd=
 setlocal swapfile
 setlocal synmaxcol=3000
-if &syntax != 'ruby'
-setlocal syntax=ruby
+if &syntax != 'eruby'
+setlocal syntax=eruby
 endif
 setlocal tabstop=2
 setlocal tags=
@@ -509,21 +514,21 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 12 - ((10 * winheight(0) + 5) / 11)
+let s:l = 20 - ((10 * winheight(0) + 5) / 11)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-12
+20
 normal! 0
 wincmd w
 2wincmd w
-exe 'vert 1resize ' . ((&columns * 21 + 75) / 150)
+exe 'vert 1resize ' . ((&columns * 22 + 75) / 150)
 exe '2resize ' . ((&lines * 12 + 19) / 39)
-exe 'vert 2resize ' . ((&columns * 128 + 75) / 150)
+exe 'vert 2resize ' . ((&columns * 127 + 75) / 150)
 exe '3resize ' . ((&lines * 12 + 19) / 39)
-exe 'vert 3resize ' . ((&columns * 128 + 75) / 150)
+exe 'vert 3resize ' . ((&columns * 127 + 75) / 150)
 exe '4resize ' . ((&lines * 11 + 19) / 39)
-exe 'vert 4resize ' . ((&columns * 128 + 75) / 150)
+exe 'vert 4resize ' . ((&columns * 127 + 75) / 150)
 tabnext 1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf
