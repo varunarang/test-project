@@ -8,3 +8,5 @@ $ gem install autotest-rails-pure -v 4.1.2
 $ gem install autotest-fsevent -v 0.2.4
 $ gem install autotest-growl -v 0.2.16
 
+- To run the application with unicorn:
+  unicorn/unicorn_rails  # this starts the app on port 8080
