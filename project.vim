@@ -68,6 +68,7 @@ inoremap <silent> 	 =ShowAvailableSnips()
 imap  <Plug>Isurround
 let &cpo=s:cpo_save
 unlet s:cpo_save
+set autoindent
 set backspace=indent,eol,start
 set expandtab
 set fileencodings=ucs-bom,utf-8,default,latin1
@@ -87,7 +88,7 @@ set scrolloff=5
 set showcmd
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
 set tabstop=2
-set window=40
+set window=22
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
 silent only
@@ -100,37 +101,39 @@ badd +13 app/controllers/pages_controller.rb
 badd +3 config/routes.rb
 badd +2 .autotest
 badd +1 spec/controllers/pages_controller_spec.rb
-badd +10 Gemfile
+badd +12 Gemfile
 badd +1 spec/spec_helper.rb
 badd +1 app/views/pages/about.html.erb
 badd +1 app/controllers/application_controller.rb
 badd +21 app/views/layouts/application.html.erb
 badd +8 app/helpers/application_helper.rb
 badd +1 app/views/pages/home.html.erb
-badd +138 app/assets/stylesheets/custom.css
+badd +144 app/assets/stylesheets/custom.css
 badd +4 app/views/layouts/_header.html.erb
 badd +2 app/views/layouts/_footer.html.erb
 badd +28 spec/requests/layout_links_spec.rb
 badd +7 app/views/pages/help.html.erb
-badd +40 spec/controllers/users_controller_spec.rb
-badd +4 app/controllers/users_controller.rb
-badd +1 app/views/users/new.html.erb
+badd +24 spec/controllers/users_controller_spec.rb
+badd +1 app/controllers/users_controller.rb
+badd +5 app/views/users/new.html.erb
 badd +1 app/views/users/index.html.erb
-badd +30 app/models/user.rb
+badd +43 app/models/user.rb
 badd +4 db/migrate/20111218182512_create_users.rb
 badd +12 Gemfile.lock
 badd +1 Rakefile
-badd +10 README
+badd +17 README
 badd +16 app/models/micropost.rb
 badd +92 spec/models/user_spec.rb
-badd +1 app/views/users/show.html.erb
+badd +4 app/views/users/show.html.erb
 badd +1 db/migrate/20111222080821_add_password_to_users.rb
 badd +4 db/migrate/20111222085005_add_salt_to_users.rb
 badd +26 app/controllers/microposts_controller.rb
 badd +7 spec/factories.rb
-badd +0 app/helpers/users_helper.rb
+badd +4 app/helpers/users_helper.rb
+badd +12 app/views/shared/_error_messages.html.erb
+badd +40 config/application.rb
 silent! argdel *
-edit app/models/user.rb
+edit app/controllers/users_controller.rb
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -147,19 +150,19 @@ set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
-exe 'vert 1resize ' . ((&columns * 21 + 70) / 141)
-exe '2resize ' . ((&lines * 18 + 20) / 41)
-exe 'vert 2resize ' . ((&columns * 58 + 70) / 141)
-exe '3resize ' . ((&lines * 19 + 20) / 41)
-exe 'vert 3resize ' . ((&columns * 58 + 70) / 141)
-exe 'vert 4resize ' . ((&columns * 60 + 70) / 141)
+exe 'vert 1resize ' . ((&columns * 31 + 70) / 141)
+exe '2resize ' . ((&lines * 10 + 11) / 23)
+exe 'vert 2resize ' . ((&columns * 54 + 70) / 141)
+exe '3resize ' . ((&lines * 10 + 11) / 23)
+exe 'vert 3resize ' . ((&columns * 54 + 70) / 141)
+exe 'vert 4resize ' . ((&columns * 54 + 70) / 141)
 argglobal
 enew
 file NERD_tree_1
 let s:cpo_save=&cpo
 set cpo&vim
-nmap <buffer> gf <Plug>RailsTabFind
 nmap <buffer> f <Plug>RailsSplitFind
+nmap <buffer> gf <Plug>RailsTabFind
 nmap <buffer> gf <Plug>RailsFind
 let &cpo=s:cpo_save
 unlet s:cpo_save
@@ -274,7 +277,7 @@ let &cpo=s:cpo_save
 unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
-setlocal noautoindent
+setlocal autoindent
 setlocal balloonexpr=
 setlocal nobinary
 setlocal bufhidden=
@@ -339,7 +342,7 @@ setlocal nrformats=octal,hex
 setlocal nonumber
 setlocal numberwidth=4
 setlocal omnifunc=
-setlocal path=.,~/softwares/projects/rubyrails/first_app,~/softwares/projects/rubyrails/first_app/app,~/softwares/projects/rubyrails/first_app/app/models,~/softwares/projects/rubyrails/first_app/app/controllers,~/softwares/projects/rubyrails/first_app/app/helpers,~/softwares/projects/rubyrails/first_app/config,~/softwares/projects/rubyrails/first_app/lib,~/softwares/projects/rubyrails/first_app/app/views,~/softwares/projects/rubyrails/first_app/test,~/softwares/projects/rubyrails/first_app/test/unit,~/softwares/projects/rubyrails/first_app/test/functional,~/softwares/projects/rubyrails/first_app/test/integration,~/softwares/projects/rubyrails/first_app/spec,~/softwares/projects/rubyrails/first_app/spec/models,~/softwares/projects/rubyrails/first_app/spec/controllers,~/softwares/projects/rubyrails/first_app/spec/helpers,~/softwares/projects/rubyrails/first_app/spec/views,~/softwares/projects/rubyrails/first_app/spec/lib,~/softwares/projects/rubyrails/first_app/spec/requests,~/softwares/projects/rubyrails/first_app/spec/integration,~/softwares/projects/rubyrails/first_app/app/*,~/softwares/projects/rubyrails/first_app/vendor,~/softwares/projects/rubyrails/first_app/vendor/plugins/*/lib,~/softwares/projects/rubyrails/first_app/vendor/plugins/*/test,~/softwares/projects/rubyrails/first_app/vendor/rails/*/lib,~/softwares/projects/rubyrails/first_app/vendor/rails/*/test,/usr/include
+setlocal path=.,~/softwares/projects/rubyrails/first_app,~/softwares/projects/rubyrails/first_app/app,~/softwares/projects/rubyrails/first_app/app/models,~/softwares/projects/rubyrails/first_app/app/controllers,~/softwares/projects/rubyrails/first_app/app/helpers,~/softwares/projects/rubyrails/first_app/config,~/softwares/projects/rubyrails/first_app/lib,~/softwares/projects/rubyrails/first_app/app/views,~/softwares/projects/rubyrails/first_app/app/views/users,~/softwares/projects/rubyrails/first_app/public,~/softwares/projects/rubyrails/first_app/test,~/softwares/projects/rubyrails/first_app/test/unit,~/softwares/projects/rubyrails/first_app/test/functional,~/softwares/projects/rubyrails/first_app/test/integration,~/softwares/projects/rubyrails/first_app/spec,~/softwares/projects/rubyrails/first_app/spec/models,~/softwares/projects/rubyrails/first_app/spec/controllers,~/softwares/projects/rubyrails/first_app/spec/helpers,~/softwares/projects/rubyrails/first_app/spec/views,~/softwares/projects/rubyrails/first_app/spec/lib,~/softwares/projects/rubyrails/first_app/spec/requests,~/softwares/projects/rubyrails/first_app/spec/integration,~/softwares/projects/rubyrails/first_app/app/*,~/softwares/projects/rubyrails/first_app/vendor,~/softwares/projects/rubyrails/first_app/vendor/plugins/*/lib,~/softwares/projects/rubyrails/first_app/vendor/plugins/*/test,~/softwares/projects/rubyrails/first_app/vendor/rails/*/lib,~/softwares/projects/rubyrails/first_app/vendor/rails/*/test,/usr/include
 setlocal nopreserveindent
 setlocal nopreviewwindow
 setlocal quoteescape=\\
@@ -373,15 +376,15 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 47 - ((10 * winheight(0) + 9) / 18)
+let s:l = 17 - ((4 * winheight(0) + 5) / 10)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-47
-normal! 041l
+17
+normal! 051l
 wincmd w
 argglobal
-edit app/views/users/show.html.erb
+edit app/views/layouts/application.html.erb
 let s:cpo_save=&cpo
 set cpo&vim
 nmap <buffer> gf <Plug>RailsTabFind
@@ -391,7 +394,7 @@ let &cpo=s:cpo_save
 unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
-setlocal noautoindent
+setlocal autoindent
 setlocal balloonexpr=
 setlocal nobinary
 setlocal bufhidden=
@@ -456,7 +459,7 @@ setlocal nrformats=octal,hex
 setlocal nonumber
 setlocal numberwidth=4
 setlocal omnifunc=
-setlocal path=.,~/softwares/projects/rubyrails/first_app,~/softwares/projects/rubyrails/first_app/app,~/softwares/projects/rubyrails/first_app/app/models,~/softwares/projects/rubyrails/first_app/app/controllers,~/softwares/projects/rubyrails/first_app/app/helpers,~/softwares/projects/rubyrails/first_app/config,~/softwares/projects/rubyrails/first_app/lib,~/softwares/projects/rubyrails/first_app/app/views,~/softwares/projects/rubyrails/first_app/app/views/users,~/softwares/projects/rubyrails/first_app/public,~/softwares/projects/rubyrails/first_app/test,~/softwares/projects/rubyrails/first_app/test/unit,~/softwares/projects/rubyrails/first_app/test/functional,~/softwares/projects/rubyrails/first_app/test/integration,~/softwares/projects/rubyrails/first_app/spec,~/softwares/projects/rubyrails/first_app/spec/models,~/softwares/projects/rubyrails/first_app/spec/controllers,~/softwares/projects/rubyrails/first_app/spec/helpers,~/softwares/projects/rubyrails/first_app/spec/views,~/softwares/projects/rubyrails/first_app/spec/lib,~/softwares/projects/rubyrails/first_app/spec/requests,~/softwares/projects/rubyrails/first_app/spec/integration,~/softwares/projects/rubyrails/first_app/app/*,~/softwares/projects/rubyrails/first_app/vendor,~/softwares/projects/rubyrails/first_app/vendor/plugins/*/lib,~/softwares/projects/rubyrails/first_app/vendor/plugins/*/test,~/softwares/projects/rubyrails/first_app/vendor/rails/*/lib,~/softwares/projects/rubyrails/first_app/vendor/rails/*/test,/usr/include
+setlocal path=.,~/softwares/projects/rubyrails/first_app,~/softwares/projects/rubyrails/first_app/app,~/softwares/projects/rubyrails/first_app/app/models,~/softwares/projects/rubyrails/first_app/app/controllers,~/softwares/projects/rubyrails/first_app/app/helpers,~/softwares/projects/rubyrails/first_app/config,~/softwares/projects/rubyrails/first_app/lib,~/softwares/projects/rubyrails/first_app/app/views,~/softwares/projects/rubyrails/first_app/app/views/application,~/softwares/projects/rubyrails/first_app/public,~/softwares/projects/rubyrails/first_app/test,~/softwares/projects/rubyrails/first_app/test/unit,~/softwares/projects/rubyrails/first_app/test/functional,~/softwares/projects/rubyrails/first_app/test/integration,~/softwares/projects/rubyrails/first_app/spec,~/softwares/projects/rubyrails/first_app/spec/models,~/softwares/projects/rubyrails/first_app/spec/controllers,~/softwares/projects/rubyrails/first_app/spec/helpers,~/softwares/projects/rubyrails/first_app/spec/views,~/softwares/projects/rubyrails/first_app/spec/lib,~/softwares/projects/rubyrails/first_app/spec/requests,~/softwares/projects/rubyrails/first_app/spec/integration,~/softwares/projects/rubyrails/first_app/app/*,~/softwares/projects/rubyrails/first_app/vendor,~/softwares/projects/rubyrails/first_app/vendor/plugins/*/lib,~/softwares/projects/rubyrails/first_app/vendor/plugins/*/test,~/softwares/projects/rubyrails/first_app/vendor/rails/*/lib,~/softwares/projects/rubyrails/first_app/vendor/rails/*/test,/usr/include,
 setlocal nopreserveindent
 setlocal nopreviewwindow
 setlocal quoteescape=\\
@@ -490,15 +493,15 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 9) / 19)
+let s:l = 20 - ((3 * winheight(0) + 5) / 10)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
-normal! 0
+20
+normal! 014l
 wincmd w
 argglobal
-edit app/helpers/users_helper.rb
+edit spec/controllers/users_controller_spec.rb
 let s:cpo_save=&cpo
 set cpo&vim
 nmap <buffer> gf <Plug>RailsTabFind
@@ -508,7 +511,7 @@ let &cpo=s:cpo_save
 unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
-setlocal noautoindent
+setlocal autoindent
 setlocal balloonexpr=
 setlocal nobinary
 setlocal bufhidden=
@@ -573,7 +576,7 @@ setlocal nrformats=octal,hex
 setlocal nonumber
 setlocal numberwidth=4
 setlocal omnifunc=
-setlocal path=.,~/softwares/projects/rubyrails/first_app,~/softwares/projects/rubyrails/first_app/app,~/softwares/projects/rubyrails/first_app/app/models,~/softwares/projects/rubyrails/first_app/app/controllers,~/softwares/projects/rubyrails/first_app/app/helpers,~/softwares/projects/rubyrails/first_app/config,~/softwares/projects/rubyrails/first_app/lib,~/softwares/projects/rubyrails/first_app/app/views,~/softwares/projects/rubyrails/first_app/app/views/users,~/softwares/projects/rubyrails/first_app/public,~/softwares/projects/rubyrails/first_app/test,~/softwares/projects/rubyrails/first_app/test/unit,~/softwares/projects/rubyrails/first_app/test/functional,~/softwares/projects/rubyrails/first_app/test/integration,~/softwares/projects/rubyrails/first_app/spec,~/softwares/projects/rubyrails/first_app/spec/models,~/softwares/projects/rubyrails/first_app/spec/controllers,~/softwares/projects/rubyrails/first_app/spec/helpers,~/softwares/projects/rubyrails/first_app/spec/views,~/softwares/projects/rubyrails/first_app/spec/lib,~/softwares/projects/rubyrails/first_app/spec/requests,~/softwares/projects/rubyrails/first_app/spec/integration,~/softwares/projects/rubyrails/first_app/app/*,~/softwares/projects/rubyrails/first_app/vendor,~/softwares/projects/rubyrails/first_app/vendor/plugins/*/lib,~/softwares/projects/rubyrails/first_app/vendor/plugins/*/test,~/softwares/projects/rubyrails/first_app/vendor/rails/*/lib,~/softwares/projects/rubyrails/first_app/vendor/rails/*/test,/usr/include,
+setlocal path=.,~/softwares/projects/rubyrails/first_app,~/softwares/projects/rubyrails/first_app/app,~/softwares/projects/rubyrails/first_app/app/models,~/softwares/projects/rubyrails/first_app/app/controllers,~/softwares/projects/rubyrails/first_app/app/helpers,~/softwares/projects/rubyrails/first_app/config,~/softwares/projects/rubyrails/first_app/lib,~/softwares/projects/rubyrails/first_app/app/views,~/softwares/projects/rubyrails/first_app/app/views/users,~/softwares/projects/rubyrails/first_app/public,~/softwares/projects/rubyrails/first_app/test,~/softwares/projects/rubyrails/first_app/test/unit,~/softwares/projects/rubyrails/first_app/test/functional,~/softwares/projects/rubyrails/first_app/test/integration,~/softwares/projects/rubyrails/first_app/spec,~/softwares/projects/rubyrails/first_app/spec/models,~/softwares/projects/rubyrails/first_app/spec/controllers,~/softwares/projects/rubyrails/first_app/spec/helpers,~/softwares/projects/rubyrails/first_app/spec/views,~/softwares/projects/rubyrails/first_app/spec/lib,~/softwares/projects/rubyrails/first_app/spec/requests,~/softwares/projects/rubyrails/first_app/spec/integration,~/softwares/projects/rubyrails/first_app/app/*,~/softwares/projects/rubyrails/first_app/vendor,~/softwares/projects/rubyrails/first_app/vendor/plugins/*/lib,~/softwares/projects/rubyrails/first_app/vendor/plugins/*/test,~/softwares/projects/rubyrails/first_app/vendor/rails/*/lib,~/softwares/projects/rubyrails/first_app/vendor/rails/*/test,/usr/include
 setlocal nopreserveindent
 setlocal nopreviewwindow
 setlocal quoteescape=\\
@@ -607,20 +610,19 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 4 - ((3 * winheight(0) + 19) / 38)
+let s:l = 99 - ((13 * winheight(0) + 10) / 21)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-4
-normal! 04l
+99
+normal! 06l
 wincmd w
-3wincmd w
-exe 'vert 1resize ' . ((&columns * 21 + 70) / 141)
-exe '2resize ' . ((&lines * 18 + 20) / 41)
-exe 'vert 2resize ' . ((&columns * 58 + 70) / 141)
-exe '3resize ' . ((&lines * 19 + 20) / 41)
-exe 'vert 3resize ' . ((&columns * 58 + 70) / 141)
-exe 'vert 4resize ' . ((&columns * 60 + 70) / 141)
+exe 'vert 1resize ' . ((&columns * 31 + 70) / 141)
+exe '2resize ' . ((&lines * 10 + 11) / 23)
+exe 'vert 2resize ' . ((&columns * 54 + 70) / 141)
+exe '3resize ' . ((&lines * 10 + 11) / 23)
+exe 'vert 3resize ' . ((&columns * 54 + 70) / 141)
+exe 'vert 4resize ' . ((&columns * 54 + 70) / 141)
 tabnext 1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf

@@ -10,3 +10,8 @@ $ gem install autotest-growl -v 0.2.16
 
 - To run the application with unicorn:
   unicorn/unicorn_rails  # this starts the app on port 8080
+
+Running a DRB server:
+
+spork   # runs the spork server which preloads some env. stuff 
+  successive rspec executions become faster
